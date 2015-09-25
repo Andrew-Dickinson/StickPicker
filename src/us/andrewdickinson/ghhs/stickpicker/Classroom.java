@@ -23,9 +23,18 @@ public class Classroom {
 
     public Classroom(int class_hour, String csvFileName)
             throws IOException, IllegalClassFormatException{
+        if (class_hour < 0){
+            throw new IllegalArgumentException();
+        }
         this.class_hour = class_hour;
         importFromCSV(csvFileName);
     }
+
+    public Classroom(String csvFileName)
+        throws IOException, IllegalClassFormatException{
+            importFromCSV(csvFileName);
+    }
+
 
     public void setupUnpickedList(){
         unpicked_list = new ArrayList<Student>(student_list);
@@ -40,8 +49,38 @@ public class Classroom {
         return unpicked_list.remove(index);
     }
 
+    public void setClass_hour(int class_hour) {
+        this.class_hour = class_hour;
+    }
+
     public int getHour() {
         return class_hour;
+    }
+
+    /**
+     * Gets a version of the hour with the modifier i.e. "2nd", "4th"
+     * @throws UnsupportedOperationException If class_hour
+     *                                       isn't a logical value
+     * @return The pretty string
+     */
+    public String getPrettyHour(){
+        int last_digit = class_hour % 10;
+        if (last_digit == 0){
+            return class_hour + "th";
+        } else if (last_digit == 1 && class_hour != 11){
+            return class_hour + "st";
+        } else if (last_digit == 2 && class_hour != 12){
+            return class_hour + "nd";
+        } else if (last_digit == 3 && class_hour != 13){
+            return class_hour + "rd";
+        } else if (last_digit > 3){
+            return class_hour + "th";
+        } else if (class_hour == 11 ||
+                        class_hour == 12 || class_hour == 13) {
+            return class_hour + "th";
+        } else {
+            throw new UnsupportedOperationException();
+        }
     }
 
     /**

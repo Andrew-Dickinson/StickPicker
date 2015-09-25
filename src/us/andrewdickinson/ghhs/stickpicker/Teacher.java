@@ -9,17 +9,21 @@ import java.util.ArrayList;
  * Created by Andrew on 9/13/2015.
  */
 public class Teacher {
-    private ArrayList<Classroom> classrooms;
+    private ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
 
     /**
      * Adds a classroom to the teacher
      * @param classroom The classroom to add
      */
     public void addClassroom(Classroom classroom){
-        if(classrooms.contains(classroom)){
-            throw new IllegalArgumentException("A class already exists for that hour");
+        if (classroom != null) {
+            if (classrooms.contains(classroom)) {
+                throw new IllegalArgumentException("A class already exists for that hour");
+            } else {
+                classrooms.add(classroom);
+            }
         } else {
-            classrooms.add(classroom);
+            throw new IllegalArgumentException();
         }
     }
 
