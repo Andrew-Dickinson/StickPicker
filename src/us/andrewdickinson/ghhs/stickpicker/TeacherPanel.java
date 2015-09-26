@@ -20,7 +20,7 @@ public class TeacherPanel extends JPanel {
     JButton resetNamesButton;
     JButton showAdvancedButton;
 
-    JComboBox<String> hourBox;
+    JComboBox hourBox;
     ActionListener hourboxListener;
     JTextArea name_list;
 
@@ -43,7 +43,7 @@ public class TeacherPanel extends JPanel {
         JLabel selectClassLabel = new JLabel("Select class:");
         mainPanel.add(selectClassLabel);
 
-        hourBox = new JComboBox<String>(this.teacher.getClassHours());
+        hourBox = new JComboBox(this.teacher.getClassHours());
         hourBox.addActionListener(hourboxListener);
         mainPanel.add(hourBox);
 

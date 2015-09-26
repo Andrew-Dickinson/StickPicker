@@ -1,8 +1,6 @@
 package us.andrewdickinson.ghhs.stickpicker;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.sun.xml.internal.ws.org.objectweb.asm.ClassAdapter;
 
 import java.util.ArrayList;
 import java.util.prefs.Preferences;
