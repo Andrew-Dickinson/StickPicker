@@ -26,14 +26,15 @@ public class ImportPanel extends JPanel{
         classTeacher = teacher;
         ButtonListener bl = new ButtonListener();
 
-//        JLabel studentText = new JLabel("Students");
+        JLabel selectAFile = new JLabel("Select a file to import:");
+        JLabel studentsFound = new JLabel("Students Found:");
 
         name_list = new JTextArea();
         name_list.setEditable(false);
         JScrollPane incomingClassDisplay = new JScrollPane(name_list);
         incomingClassDisplay.setPreferredSize(new Dimension(250, 200));
 
-        fileButton = new JButton("Select File");
+        fileButton = new JButton("Select CSV File");
         fileButton.addActionListener(bl);
 
         importButton = new JButton("Import");
@@ -62,7 +63,9 @@ public class ImportPanel extends JPanel{
 
         bottomGrid.add(importButtonPanel);
 
+        add(selectAFile);
         add(fileButton);
+        add(studentsFound);
         add(incomingClassDisplay);
         add(bottomGrid);
     }
@@ -87,6 +90,14 @@ public class ImportPanel extends JPanel{
         return null;
     }
 
+    /**
+     * Closes the parent dialog. It's a long ways up the chain
+     */
+    private void closeDialog(){
+        this.getParent().getParent()
+                .getParent().getParent().setVisible(false);
+    }
+
     private class ButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -109,6 +120,7 @@ public class ImportPanel extends JPanel{
                                " hour class was imported successfully!",
                             "Import Successful",
                             JOptionPane.PLAIN_MESSAGE);
+                    closeDialog();
                 } catch (NumberFormatException error) {
                     JOptionPane.showMessageDialog(null,
                             "Please specify a valid hour",

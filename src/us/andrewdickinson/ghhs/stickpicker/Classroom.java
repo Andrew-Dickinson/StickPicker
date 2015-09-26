@@ -45,8 +45,14 @@ public class Classroom {
             setupUnpickedList();
         }
 
-        int index = (int) (Math.random() * (unpicked_list.size() + 1));
-        return unpicked_list.remove(index);
+        int index = (int) (Math.random() * (unpicked_list.size()));
+        Student picked_student = unpicked_list.remove(index);
+
+        if (unpicked_list.size() == 0){
+            setupUnpickedList();
+        }
+
+        return picked_student;
     }
 
     public void setClass_hour(int class_hour) {
@@ -136,7 +142,7 @@ public class Classroom {
         if (o == null || getClass() != o.getClass()) return false;
 
         Classroom classroom = (Classroom) o;
-        return (class_hour != classroom.class_hour);
+        return (class_hour == classroom.class_hour);
     }
 
     public int compareTo(Classroom other){
@@ -186,6 +192,7 @@ public class Classroom {
             addStudent(firstName, lastName);
         }
 
+        setupUnpickedList();
     }
 
     @Override
@@ -202,8 +209,27 @@ public class Classroom {
         return names;
     }
 
+    public ArrayList<String> getUnselectedNames(){
+        ArrayList<String> names = new ArrayList<String>();
+        for (Student student : unpicked_list){
+            names.add(student.toString());
+        }
+
+        return names;
+    }
+
     public String getNamesStringWithNewLineSeperators(){
         ArrayList<String> names = getNames();
+        String string = "";
+        for (String name : names){
+            string += name + "\n";
+        }
+
+        return string;
+    }
+
+    public String getUnSelectedNamesStringWithNewLineSeperators(){
+        ArrayList<String> names = getUnselectedNames();
         String string = "";
         for (String name : names){
             string += name + "\n";
