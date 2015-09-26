@@ -59,10 +59,10 @@ public class TeacherPanel extends JPanel {
         unpickedStudentsDisplay.setPreferredSize(new Dimension(250, 200));
         mainPanel.add(unpickedStudentsDisplay);
 
-        resetNamesButton = new JButton("Add all names back");
+        resetNamesButton = new JButton("Add all names back to the list");
         resetNamesButton.addActionListener(bl);
-        mainPanel.add(resetNamesButton);
         mainPanel.add(pickButton);
+        mainPanel.add(resetNamesButton);
 
         add(mainPanel, BorderLayout.CENTER);
 
@@ -134,11 +134,8 @@ public class TeacherPanel extends JPanel {
         dialog.setResizable(false);
         dialog.getContentPane().add(importPanel);
         dialog.setSize(300, 375);
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-
-        //TODO: Center on screen
-        //TODO: Jar
-        //TODO: Icon
     }
 
     private void updateHourBox(){

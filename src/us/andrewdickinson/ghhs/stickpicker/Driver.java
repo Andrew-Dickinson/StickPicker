@@ -1,10 +1,11 @@
 package us.andrewdickinson.ghhs.stickpicker;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.prefs.Preferences;
+import java.io.IOException;
 
 /**
  * Created by Andrew on 9/13/2015.
@@ -16,9 +17,17 @@ public class Driver {
         final Teacher teacher = new Teacher();
         teacher.load();
 
+        try {
+            Image icon = ImageIO.read(
+                    TeacherPanel.class.getResourceAsStream("icon32.png"));
+            frame.setIconImage(icon);
+        } catch (IOException e){
+            System.out.println("Error setting icon!");
+        }
+
         TeacherPanel teacherPanel = new TeacherPanel(teacher);
         frame.getContentPane().add(teacherPanel);
-        frame.setSize(300, 400);
+        frame.setSize(300, 425);
         frame.setResizable(false);
         frame.setVisible(true);
 
