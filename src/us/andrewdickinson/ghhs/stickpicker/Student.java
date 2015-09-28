@@ -3,7 +3,7 @@ package us.andrewdickinson.ghhs.stickpicker;
 /**
  * Created by Andrew on 9/13/2015.
  */
-public class Student {
+public class Student implements Comparable<Student>{
     private String firstName;
     private String lastName;
 
@@ -44,6 +44,7 @@ public class Student {
         return true;
     }
 
+    @Override
     public int compareTo(Student other){
         if (this.equals(other)) return 0;
 

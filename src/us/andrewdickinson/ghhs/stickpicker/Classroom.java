@@ -5,8 +5,8 @@ import com.opencsv.CSVReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.instrument.IllegalClassFormatException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -211,6 +211,9 @@ public class Classroom {
 
     public ArrayList<String> getUnselectedNames(){
         ArrayList<String> names = new ArrayList<String>();
+
+        Collections.sort(unpicked_list);
+
         for (Student student : unpicked_list){
             names.add(student.toString());
         }
