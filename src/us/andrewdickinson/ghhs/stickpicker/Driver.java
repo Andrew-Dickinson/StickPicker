@@ -27,7 +27,7 @@ public class Driver {
 
         TeacherPanel teacherPanel = new TeacherPanel(teacher);
         frame.getContentPane().add(teacherPanel);
-        frame.setSize(300, 425);
+        frame.setSize(300, 435);
         frame.setResizable(false);
         frame.setVisible(true);
 

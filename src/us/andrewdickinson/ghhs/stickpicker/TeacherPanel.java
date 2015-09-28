@@ -67,16 +67,24 @@ public class TeacherPanel extends JPanel {
         add(mainPanel, BorderLayout.CENTER);
 
         JPanel bottomPanel = new JPanel(new BorderLayout());
-        advancedPanel = new JPanel(new FlowLayout());
+        advancedPanel = new JPanel(new BorderLayout());
+        JPanel subPanel = new JPanel(new FlowLayout());
 
         importNewButton = new JButton("Import New Class");
         importNewButton.addActionListener(bl);
-        advancedPanel.add(importNewButton);
+        subPanel.add(importNewButton);
 
         removeClassButton = new JButton("Remove Class");
         removeClassButton.setForeground(Color.RED);
         removeClassButton.addActionListener(bl);
-        advancedPanel.add(removeClassButton);
+        subPanel.add(removeClassButton);
+
+        advancedPanel.add(subPanel, BorderLayout.CENTER);
+
+        JLabel signatureLabel = new JLabel("An Andrew Dickinson Production");
+        signatureLabel.setFont(new Font("Arial", Font.ITALIC, 10));
+        signatureLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        advancedPanel.add(signatureLabel, BorderLayout.SOUTH);
 
         showAdvancedButton = new JButton("Show Advanced");
         showAdvancedButton.addActionListener(bl);
