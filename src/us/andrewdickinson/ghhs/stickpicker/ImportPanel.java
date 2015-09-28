@@ -40,16 +40,9 @@ public class ImportPanel extends JPanel{
         importButton = new JButton("Import");
         importButton.addActionListener(bl);
 
-        NumberFormat longFormat = NumberFormat.getIntegerInstance();
-
-        NumberFormatter numberFormatter =
-                new NumberFormatter(longFormat);
-        numberFormatter.setAllowsInvalid(false);
-        numberFormatter.setMinimum(0);
-
         JLabel hour_text = new JLabel("Hour:");
 
-        hour_field = new JFormattedTextField(numberFormatter);
+        hour_field = new JTextField();
         hour_field.setPreferredSize(new Dimension(30, 20));
 
         JPanel bottomGrid = new JPanel(new GridLayout(2, 1));
@@ -112,8 +105,11 @@ public class ImportPanel extends JPanel{
                         name_list.setText("Import Error");
             } else if (e.getSource() == importButton) {
                 try {
-                    incomingClass.setClass_hour(
-                            Integer.parseInt(hour_field.getText()));
+                    int hour = Integer.parseInt(hour_field.getText());
+                    if (hour < 0){
+                        throw new NumberFormatException();
+                    }
+                    incomingClass.setClass_hour(hour);
                     classTeacher.addClassroom(incomingClass);
                     JOptionPane.showMessageDialog(null,
                             "Your " + incomingClass.getPrettyHour() +
