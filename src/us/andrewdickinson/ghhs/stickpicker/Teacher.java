@@ -3,6 +3,7 @@ package us.andrewdickinson.ghhs.stickpicker;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.prefs.Preferences;
 
 /**
@@ -80,6 +81,8 @@ public class Teacher {
         for (int i = 0; i < classrooms.size(); i++){
             hours[i] = Integer.toString(classrooms.get(i).getHour());
         }
+
+        Arrays.sort(hours);
         return hours;
     }
 
