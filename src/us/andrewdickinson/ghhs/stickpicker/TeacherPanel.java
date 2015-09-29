@@ -37,6 +37,11 @@ public class TeacherPanel extends JPanel {
             displayImportDialog(parentFrame);
         }
 
+        //Nothing changed, the dialog must have been cancelled
+        if (teacher.getClassHours().length == 0){
+            System.exit(0);
+        }
+
         ButtonListener bl = new ButtonListener();
         hourboxListener = new ClassSelectedListener();
 
